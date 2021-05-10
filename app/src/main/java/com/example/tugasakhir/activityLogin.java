@@ -42,12 +42,15 @@ public class activityLogin extends AppCompatActivity implements View.OnClickList
     }
 
     private void userLogin() {
-        String email = text_email.getText().toString().trim();
-        String password = text_password.getText().toString().trim();
+
+        String email, password;
+        email = text_email.getText().toString();
+        password = text_password.getText().toString();
 
         if (email.isEmpty()){
             text_email.setError("Email can't be empty!");
             text_email.requestFocus();
+            return;
         }
 
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
@@ -58,15 +61,18 @@ public class activityLogin extends AppCompatActivity implements View.OnClickList
         if (password.isEmpty()){
             text_password.setError("Password can't be empty!");
             text_password.requestFocus();
+            return;
         }
 
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    startActivity(new Intent(activityLogin.this, MainActivity.class));
+                    startActivity(new Intent(activityLogin.this, MainActivity.class));;
+                    text_email.setText("");
+                    text_password.setText("");
                 } else {
-                    Toast.makeText(activityLogin.this, "Failed to login!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(activityLogin.this, "Email or Password incorrect!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -82,7 +88,7 @@ public class activityLogin extends AppCompatActivity implements View.OnClickList
                 startActivity(new Intent(this, activityRegister.class));
                 break;
             case R.id.b_login:
-                startActivity(new Intent(this, MainActivity.class));
+                userLogin();
         }
     }
 }
