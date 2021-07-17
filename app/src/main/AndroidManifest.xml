@@ -11,10 +11,14 @@
         android:label="Hydra"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".activityRegister"/>
+        android:theme="@style/AppTheme"
+        android:name=".FireApp">
+        <activity android:name=".activitySettingAccount"></activity>
+        <activity android:name=".activityAccount" />
+        <activity android:name=".activityMenu" />
+        <activity android:name=".activityRegister" />
         <activity android:name=".activityForgotPassword" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".activityMain" />
         <activity android:name=".activityLogin" />
         <activity
             android:name=".Splash"

@@ -18,7 +18,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class activityRegister extends AppCompatActivity implements View.OnClickListener {
 
-    private EditText text_nama, text_contact, text_address, text_email, text_password, text_retype_password;
+    private EditText text_nama, text_contact, text_address, text_email, text_password;
     private Button b_register;
 
     private FirebaseAuth mAuth;
@@ -47,6 +47,7 @@ public class activityRegister extends AppCompatActivity implements View.OnClickL
         }
     }
 
+    //register user baru
     private void b_register(){
         final String name = text_nama.getText().toString().trim();
         final String contact = text_contact.getText().toString().trim();
